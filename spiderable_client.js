@@ -28,16 +28,16 @@ var topLevelCodeDone = function() {
 };
 
 Spiderable2.pageReadyEvaluation = function() {
-	if ( typeof Meteor === 'undefined'
-			|| Meteor.status === undefined
-			|| !Meteor.status().connected ) {
-		return false;
-	}
+    if ( typeof Meteor === 'undefined'
+            || Meteor.status === undefined
+            || !Meteor.status().connected ) {
+        return false;
+    }
     if ( typeof Package === 'undefined'
-        	|| Package['lufrai:spiderable2'] === undefined
-        	|| Package['lufrai:spiderable2'].Spiderable2 === undefined
-        	|| !Package['lufrai:spiderable2'].Spiderable2._initialSubscriptionsStarted ) {
-      	return false;
+            || Package['aknudsen:spiderable2'] === undefined
+            || Package['aknudsen:spiderable2'].Spiderable2 === undefined
+            || !Package['aknudsen:spiderable2'].Spiderable2._initialSubscriptionsStarted ) {
+          return false;
     }
     Tracker.flush();
     return DDP._allSubscriptionsReady();
