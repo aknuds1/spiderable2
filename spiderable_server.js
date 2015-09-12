@@ -114,12 +114,15 @@ Spiderable2.start = function() {
                     return re.test( req.headers['user-agent'] );
                 }
         )) {
+
             // are we using force-ssl, or an unique port then use localhost
             // per http://docs.meteor.com/#forcessl
             // unencrypted connections from localhost are always accepted over HTTP.
             // TBD: exploits unknown
 
-            if ( Meteor.absoluteUrl.defaultOptions.secure == true || process.env.PORT ){
+            if (process.env.ROOT_URL != null) {
+              var absoluteUrl = process.env.ROOT_URL;
+            } else if ( Meteor.absoluteUrl.defaultOptions.secure == true || process.env.PORT ){
               var absoluteUrl = "http://localhost:" + Spiderable2.port;
             } else {
               var absoluteUrl = Meteor.absoluteUrl();
