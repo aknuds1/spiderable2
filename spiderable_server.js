@@ -70,7 +70,7 @@ Spiderable2.loadBody = function( url, callback ) {
     }, function() {
         var pageReadyInterval = setInterval( function() {
             pageReady = zombie.evaluate( '(typeof(Spiderable2) !== "undefined")' );
-            if ( pageReady ){
+            if ( pageReady ) {
                 Meteor.clearInterval( pageReadyInterval );
                 if ( Spiderable2.verbose ) console.log( 'The page is now ready.' );
                 var spiderable2ReadyInterval = setInterval( function(){
@@ -93,6 +93,8 @@ Spiderable2.loadBody = function( url, callback ) {
                         }, 300 );
                     }
                 }, 300 );
+            } else {
+                if ( Spiderable2.verbose ) console.log( 'Still waiting for page to be ready.' );
             }
         }, 300 );
     });
